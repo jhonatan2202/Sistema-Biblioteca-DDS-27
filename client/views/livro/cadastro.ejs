@@ -8,27 +8,12 @@
     <!-- CRIAR O FORMULARIO DE CADASTRO -->
      <div class="d-flex flex-column">
         <!-- ACTIONS - FALA A ROTA QUE O BOTÃO VAI ENVIAR AS INFORMAÇÕES -->
-        <form action="/livro/cadastrar" method="post">
+        <form action="/livro/cadastro" method="post">
 
     <!-- CAIXINHA DE TITULO -->
       <div class="form-group">
         <label for="nome">Título: </label>
         <input type="text" name="titulo" id="titulo" class="form-control" required />
-      </div>
-
-    <!-- CAIXINHA DE ANO LANÇAMENTO -->
-     <div class="form-group">
-        <label for="email">Ano de Lançamento: </label>
-        <input type="date" name="ano_lancamento" id="ano_lancamento" class="form-control" required />
-     </div>
-
-    <!-- CAIXINHA DE Visibilidade do Sistema -->
-      <div class="form-group">
-        <label for="perfil">Visibilidade do Sistema: </label>
-        <select name="visibilidade" id="visibilidade" class="form-control">
-            <option value="ativo">Ativo</option>
-            <option value="desativado">Desativado</option>
-        </select>
       </div>
 
     <!-- CAIXINHA DE AUTOR -->
@@ -37,6 +22,12 @@
         <input type="text" name="autor" id="autor" class="form-control" required />
       </div>
 
+    <!-- CAIXINHA DE ANO LANÇAMENTO -->
+     <div class="form-group">
+        <label for="email">Ano de Lançamento: </label>
+        <input type="date" name="ano_publicacao" id="ano_publicacao" class="form-control" required />
+     </div>
+
     <!-- CAIXINHA GENERO -->
     <div class="form-group">
         <label for="perfil">Gênero: </label>
@@ -44,6 +35,15 @@
             <option value="aventura">Aventura</option>
             <option value="ficcao">Ficção</option>
             <option value="drama">Drama</option>
+        </select>
+      </div>
+
+    <!-- CAIXINHA DE Visibilidade do Sistema -->
+      <div class="form-group">
+        <label for="perfil">Visibilidade do Sistema: </label>
+        <select name="esta_disponivel" id="esta_disponivel" class="form-control">
+            <option value="ativo">Ativo</option>
+            <option value="desativado">Desativado</option>
         </select>
       </div>
 

@@ -16,13 +16,13 @@ module.exports = {
     criarL: async (req,res) =>{
         try{
             // COLETA AS INFORMAÇÕES DO BODY DA REQUISIÇÃO
-            const { titulo,ano_publicacao,esta_disponivel,autor,genero} = req.body
+            const {titulo,autor,ano_publicacao,genero,esta_disponivel} = req.body
         
             // PASSA AS INFORMAÇÕES PARA O MODEL
-            await livroModels.criarLivro(titulo,ano_publicacao,esta_disponivel,autor,genero)
+            await livroModels.criarLivro(titulo,autor,ano_publicacao,genero,esta_disponivel)
         
             // REDIRECIONA PARA A PÁGINA DE LISTA DE USUÁRIO
-            res.redirect("/usuarios")
+            res.redirect("/")
         
         
             }

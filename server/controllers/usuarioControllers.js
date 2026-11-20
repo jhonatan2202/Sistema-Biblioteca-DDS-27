@@ -35,9 +35,17 @@ module.exports = {
 
     },
     // READ
-    listarUsuarios: (req,res) =>{
-        usuarioModels.listarUsuarios()
-        res.send("Mostre a lista de usuários")
+    listar: async (req,res) =>{
+        try{
+            // EXECUTAR O MODEL
+            const listaUsuarios = await usuarioModels.listarUsuarios()
+            // RENDERIZA A TELA DE LISTA, PASSANDO O QUE O MODEL TE MANDOU
+            res.render('usuarios/listar', { listaUsuarios })
+        }
+        catch(erro){
+            console.log(erro);
+            res.render("erro", {erro,mensagem: "Erro ao listar os usuários"})
+        }
     },
     // UPDATE
     atualizarUsuario: (req,res) =>{

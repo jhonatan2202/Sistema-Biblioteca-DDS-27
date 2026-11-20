@@ -9,15 +9,15 @@ module.exports = {
     // },
     // CRUD
     // CREATE
-    criarLivro: async (titulo,ano_publicacao,esta_disponivel,autor,genero) =>{
+    criarLivro: async (titulo,autor,ano_publicacao,genero,esta_disponivel) =>{
         // VARIÁVEL PARA GUARDAR O COMANDO SQL
-        const sqlL = ` INSERT INTO tb_livros(titulo,ano_publicacao,esta_disponivel,autor,genero)
+        const sql = ` INSERT INTO tb_livros(titulo,autor,ano_publicacao,genero,esta_disponivel)
                       VALUES(?,?,?,?,?)`
         // EXECUTA O SQL
-        const [resultadoL] = await db.execute(sqlL,[titulo,ano_publicacao,esta_disponivel,autor,genero])
+        const [resultado] = await db.execute(sql,[titulo,autor,ano_publicacao,genero,esta_disponivel])
 
         // RETORNA PARA O CONTROLLER O RESULTADO
-        return resultadoL.insertId
+        return resultado.insertId
         
     },
     // // READ

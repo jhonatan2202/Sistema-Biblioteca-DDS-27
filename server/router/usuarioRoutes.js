@@ -14,21 +14,18 @@ router.get("/login", usuarioControllers.login)
 router.get("/cadastrar", (req,res) =>{
     res.render("usuarios/cadastrar")
 })
-
 // MANDAR AS INFORMAÇÕES DE CADASTRO PARA O CONTROLLER
 router.post("/cadastrar",usuarioControllers.criar)
-
-router.get("/listar", (req,res) =>{
-    res.render("usuarios/listar")
-})
 
 router.get("/editar", (req,res) =>{
     res.render("usuarios/editar")
 })
 
-router.get("/", (req,res)=>{
-    res.send("MOSTRANDO A LISTA DE USUÁRIOS")
-})
+router.get("/listar",usuarioControllers.listar)
+
+router.get("/",usuarioControllers.listar)
+
+
 
 
 // EXPORTAR O ROUTER
