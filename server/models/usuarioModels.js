@@ -39,8 +39,15 @@ module.exports = {
         return linhas
     },
     // UPDATE
-    atualizarUsuario: () =>{
-        console.log("ATUALIZEI UM USUÁRIOS");
+    atualizarUsuario: async (id,nome,email,senha,perfil) =>{
+        // VARIÁVEL PARA GUARDAR O COMANDO SQL
+        const sql = `UPDATE tb_usuarios
+                    SET nome = ?,email = ?,senha = ?,perfil = ?
+                    WHERE id_usuario = ?`
+        // EXECUTA O SQL
+        const [resultado] = await db.execute(sql, [nome,email,senha,perfil,id])
+        // RETORNA PRO CONTROLLER O RESULTADO
+        return resultado.affectedRows
     },
     // DELETE
     deletarUsuario: async (id) =>{
@@ -50,5 +57,14 @@ module.exports = {
         const [resultado] = await db.execute(sql, [id])
         // RETORNA PRO CONTROLLER O RESULTADO
         return resultado.affectedRows
+    },
+    // EDITAR
+    buscarPorId: async (id) =>{
+        // VARIÁVEL PARA GUARDAR O COMANDO SQL
+        const sql = `SELECT * FROM tb_usuarios WHERE id_usuario = ?`
+        // EXECUTA O SQL
+        const [resultado] = await db.execute(sql, [id])
+        // RETORNA PRO CONTROLLER O RESULTADO
+        return resultado[0]
     }
 }

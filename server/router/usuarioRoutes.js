@@ -17,9 +17,9 @@ router.get("/cadastrar", (req,res) =>{
 // MANDAR AS INFORMAÇÕES DE CADASTRO PARA O CONTROLLER
 router.post("/cadastrar",usuarioControllers.criar)
 
-router.get("/editar", (req,res) =>{
-    res.render("usuarios/editar")
-})
+// MOSTRA A ROTA DE EDITAR USUÁRIO
+router.get("/editar/:id", usuarioControllers.renderizarEditar)
+router.post("/editar/:id", usuarioControllers.editar)
 
 router.get("/listar",usuarioControllers.listar)
 

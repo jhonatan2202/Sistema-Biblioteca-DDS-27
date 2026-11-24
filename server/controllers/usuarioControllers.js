@@ -95,5 +95,41 @@ module.exports = {
             console.log(erro);
             res.render("erro", {erro,mensagem: "Erro ao deletar o usuário"})
         }
+    },
+    // EDITAR
+    renderizarEditar: async (req,res) =>{
+        try{
+            // PEGAR O ID, VINDO DA URL, ATRAVÉS DOS PARÂMETROS 
+            const idDaUrl = req.params.id
+
+            // CHAMA O MODEL, PARA COLETAR AS INFORMAÇÕES DO USUÁRIO
+            const usuarioEditado = await usuarioModels.buscarPorId(idDaUrl)
+
+            // RENDERIZA A PAGINA DE EDIAR, PASSANDO AS INFORMAÇÕES DO USUÁRIO
+            res.render("usuarios/editar", {usuarioEditado})
+        }
+        catch(erro){
+            console.log(erro);
+            res.render("erro", {erro,mensagem: "Erro ao buscar o usuário"})
+        }
+    },
+    editar: async (req,res) =>{
+        try{
+        // PEGAR O ID, VINDO DA URL, ATRAVÉS DOS PARÂMETROS 
+        const idDaUrl = req.params.id
+
+        // COLETA AS INFORMAÇÕES DO BODY DA REQUISIÇÃO
+        const { nome,email,senha,perfil} = req.body
+
+        // PASSA AS INFORMAÇÕES PARA O MODEL
+        await usuarioModels.atualizarUsuario(idDaUrl,nome,email,senha,perfil)
+
+        // REDIRECIONA PARA A PÁGINA DE LISTA DE USUÁRIO
+        res.redirect("/usuarios")
+        }
+        catch(erro){
+            console.log(erro);
+            res.render("erro", {erro,mensagem: "Erro ao editar o usuário"})
+        }
     }
 }

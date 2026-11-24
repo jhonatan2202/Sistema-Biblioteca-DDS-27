@@ -1,7 +1,71 @@
 <%- include('../partials/header') %>
 
-    <main class="container my-2 flex-grow-1">
-    <h1 style="color: black;">ESTOU NA PÁGINA DE EDITAR USUÁRIOS</h1>
-    </main>
+<main class="container my-2 flex-grow-1">
+  <h1 class="fg-accent fs-6x1 text-center">
+    ESTOU NA PÁGINA DE EDIÇÃO UM USUÁRIO
+  </h1>
+
+  <!-- CRIAR O FORMULARIO DE EDIÇÃO -->
+  <div class="d-flex flex-column">
+    <!-- ACTIONS - FALA A ROTA QUE O BOTÃO VAI ENVIAR AS INFORMAÇÕES -->
+    <form
+      action="/usuarios/editar/<%= usuarioEditado.id_usuario %>"
+      method="post"
+    >
+      <!-- CAIXINHA DE NOME -->
+      <div class="form-group">
+        <label for="nome">Nome: </label>
+        <input
+          type="text"
+          name="nome"
+          id="nome"
+          class="form-control"
+          required
+          value="<%= usuarioEditado.nome %>"
+        />
+      </div>
+
+      <!-- CAIXINHA DE EMAIL -->
+      <div class="form-group">
+        <label for="email">Email: </label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          class="form-control"
+          required
+          value="<%= usuarioEditado.email %>"
+        />
+      </div>
+
+      <!-- CAIXINHA DE PERFIL -->
+      <div class="form-group">
+        <label for="perfil">Perfil: </label>
+        <select name="perfil" id="perfil" class="form-control">
+          <option value="adm" <%= usuarioEditado.perfil === "adm" ? 'selected' : "" %>>Administrador</option>
+          <option value="bibliotecaria" <%= usuarioEditado.perfil === "bibliotecaria" ? 'selected' : "" %>>bibliotecaria</option>
+        </select>
+      </div>
+
+      <!-- CAIXINHA DE SENHA -->
+      <div class="form-group">
+        <label for="senha">Senha: </label>
+        <input
+          type="password"
+          name="senha"
+          id="senha"
+          class="form-control"
+          required
+          value="<%= usuarioEditado.senha %>"
+        />
+      </div>
+
+      <!-- BOTÃO DE ENVIO -->
+      <button type="submit" class="btn-subtle theme-success mt-3">
+        Editar
+      </button>
+    </form>
+  </div>
+</main>
 
 <%- include('../partials/footer') %>
