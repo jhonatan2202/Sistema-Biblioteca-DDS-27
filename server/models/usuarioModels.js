@@ -4,8 +4,15 @@ const db = require("../config/db")
 // EXPORTAR AS FUNÇÕES DO MODEL
 module.exports = {
     // LOGIN
-    login : () =>{
-        console.log("LOGIN USUÁRIO FUNCIONANDO");
+    login : async (email,senha) =>{
+        // VARIAVEL PARA GUARDA SQL
+        const sql = `SELECT * FROM tb_usuarios 
+                     WHERE email = ? AND senha = ? `
+        // EXECUTAR SQL
+        const [resultado] = await db.execute(sql, [email, senha])
+        // RETORNAR PRO CONTROLLER O RESULTADO
+        return resultado[0] || null
+
     },
     // CRUD
     // CREATE
@@ -36,7 +43,12 @@ module.exports = {
         console.log("ATUALIZEI UM USUÁRIOS");
     },
     // DELETE
-    deletarUsuario: () =>{
-        console.log("APAGAR UM USUÁRIO");
+    deletarUsuario: async (id) =>{
+        // VARIÁVEL PARA GUARDAR O COMANDO SQL
+        const sql = `DELETE FROM tb_usuarios WHERE id_usuario = ?`
+        // EXECUTA O SQL
+        const [resultado] = await db.execute(sql, [id])
+        // RETORNA PRO CONTROLLER O RESULTADO
+        return resultado.affectedRows
     }
 }

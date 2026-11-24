@@ -61,6 +61,17 @@
                   <a class="nav-link disabled" aria-disabled="true">Disabled</a>
                 </li> -->
               </ul>
+              <!-- CONDIÇÃO SE TIVER UM USUARIO LOGADO -->
+              <% if(usuario) { %>
+                <!-- MOSTRA O NOME -->
+                <b> <%= usuario.nome %></b>
+                <!-- BOTÃO DE LOGOUT -->
+                <a href="/login">
+                  <button class="btn-solid theme-danger">
+                    Logout
+                  </button>
+                </a>
+                <% } %>
             </div>
           </dialog>
         </div>

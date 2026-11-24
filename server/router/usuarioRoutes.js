@@ -7,7 +7,7 @@ const usuarioControllers = require("../controllers/usuarioControllers")
 
 // ROTAS DO USUÁRIO
 // LOGIN
-router.get("/login", usuarioControllers.login)
+router.post("/login", usuarioControllers.login)
 
 // CRUD
 // MOSTRA A PÁGINA DE CRIAR USUÁRIOS
@@ -24,6 +24,9 @@ router.get("/editar", (req,res) =>{
 router.get("/listar",usuarioControllers.listar)
 
 router.get("/",usuarioControllers.listar)
+
+// ROTA DE DELETAR UM USUÁRIO
+router.post("/deletar/:id", usuarioControllers.deletarUsuario)
 
 
 
