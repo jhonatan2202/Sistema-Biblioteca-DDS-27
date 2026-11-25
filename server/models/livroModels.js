@@ -20,10 +20,16 @@ module.exports = {
         return resultado.insertId
         
     },
-    // // READ
-    // listarUsuarios: () =>{
-    //     console.log("TOMA AI OS USUÁRIOS");
-    // },
+    // READ
+    listarLivros: async () =>{
+        // VARIAVEL PARA GUARDAR O COMANDO SQL
+        const sql = `SELECT * FROM tb_usuarios`
+        // EXECUTA O SQL
+        const [linhas] = await db.execute(sql)
+
+        // RETORNA PARA O CONTROLLER O RESULTADO
+        return linhas
+    },
     // // UPDATE
     // atualizarUsuario: () =>{
     //     console.log("ATUALIZEI UM USUÁRIOS");

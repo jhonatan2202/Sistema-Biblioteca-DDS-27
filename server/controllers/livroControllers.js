@@ -22,7 +22,7 @@ module.exports = {
             await livroModels.criarLivro(titulo,autor,ano_publicacao,genero,esta_disponivel)
         
             // REDIRECIONA PARA A PÁGINA DE LISTA DE USUÁRIO
-            res.redirect("/")
+            res.redirect("/livro")
         
         
             }
@@ -33,10 +33,19 @@ module.exports = {
             res.render("erro", {erro, mensagem: "Erro ao postar livro"})
             }
     },
-//     // READ
-//     listarUsuarios: (req,res) =>{
-//         usuarioModels.listarUsuarios()
-//         res.send("Mostre a lista de usuários")
+    // READ
+    listar: async (req,res) =>{
+        try{
+            // EXECUTAR O MODEL
+            const listaLivros = await livroModels.listarLivros()
+            // RENDERIZA A TELA DE LISTA, PASSANDO O QUE O MODEL TE MANDOU
+            res.render('livro/listar', { listaLivros })
+        }
+        catch(erro){
+            console.log(erro);
+            res.render("erro", {erro,mensagem: "Erro ao listar os livros"})
+        }
+    },
 //     },
 //     // UPDATE
 //     atualizarUsuario: (req,res) =>{

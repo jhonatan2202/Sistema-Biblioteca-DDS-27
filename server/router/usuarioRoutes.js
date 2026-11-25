@@ -10,6 +10,7 @@ const usuarioControllers = require("../controllers/usuarioControllers")
 router.post("/login", usuarioControllers.login)
 
 // CRUD
+
 // MOSTRA A PÁGINA DE CRIAR USUÁRIOS
 router.get("/cadastrar", (req,res) =>{
     res.render("usuarios/cadastrar")
@@ -17,13 +18,16 @@ router.get("/cadastrar", (req,res) =>{
 // MANDAR AS INFORMAÇÕES DE CADASTRO PARA O CONTROLLER
 router.post("/cadastrar",usuarioControllers.criar)
 
+
 // MOSTRA A ROTA DE EDITAR USUÁRIO
 router.get("/editar/:id", usuarioControllers.renderizarEditar)
+// MANDAR AS INFORMAÇÕES DE CADASTRO PARA O CONTROLLER
 router.post("/editar/:id", usuarioControllers.editar)
 
-router.get("/listar",usuarioControllers.listar)
 
+// MOSTRA A ROTA DE LISTAR USUÁRIO
 router.get("/",usuarioControllers.listar)
+
 
 // ROTA DE DELETAR UM USUÁRIO
 router.post("/deletar/:id", usuarioControllers.deletarUsuario)
