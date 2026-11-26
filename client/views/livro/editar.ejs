@@ -1,0 +1,60 @@
+<%- include('../partials/header') %>
+
+<main class="container my-2 flex-grow-1">
+  <h1 class="fg-accent fs-6x1 text-center">
+    ESTOU NA PÁGINA DE EDIÇÃO UM LIVRO
+  </h1>
+
+  <!-- CRIAR O FORMULARIO DE EDIÇÃO -->
+  <div class="d-flex flex-column">
+    <!-- ACTIONS - FALA A ROTA QUE O BOTÃO VAI ENVIAR AS INFORMAÇÕES -->
+    <form
+      action="/livro/editar/<%= livroEditado.id_livro %>"
+      method="post"
+    >
+      <!-- CAIXINHA DE TITULO -->
+      <div class="form-group">
+        <label for="nome">Título: </label>
+        <input type="text" name="titulo" id="titulo" class="form-control" required value="<%= livroEditado.titulo %>"/>
+      </div>
+
+    <!-- CAIXINHA DE AUTOR -->
+      <div class="form-group">
+        <label for="senha">Autor: </label>
+        <input type="text" name="autor" id="autor" class="form-control" required value="<%= livroEditado.autor %>"/>
+      </div>
+
+    <!-- CAIXINHA DE ANO LANÇAMENTO -->
+     <div class="form-group">
+        <label for="email">Ano de Lançamento: </label>
+        <input type="date" name="ano_publicacao" id="ano_publicacao" class="form-control" required value="<%= livroEditado.ano_publicacao %>"/>
+     </div>
+
+    <!-- CAIXINHA GENERO -->
+    <div class="form-group">
+        <label for="perfil">Gênero: </label>
+        <select name="genero" id="genero" class="form-control">
+            <option value="aventura" <%= livroEditado.genero === "aventura" ? 'selected' : "" %>>Aventura</option>
+            <option value="ficcao" <%= livroEditado.genero === "ficcao" ? 'selected' : "" %>>Ficção</option>
+            <option value="drama" <%= livroEditado.genero === "drama" ? 'selected' : "" %>>Drama</option>
+        </select>
+      </div>
+
+    <!-- CAIXINHA DE Visibilidade do Sistema -->
+      <div class="form-group">
+        <label for="perfil">Visibilidade do Sistema: </label>
+        <select name="esta_disponivel" id="esta_disponivel" class="form-control">
+            <option value="1" <%= livroEditado.esta_disponivel === "1" ? 'selected' : "" %>>Ativo</option>
+            <option value="0"> <%= livroEditado.esta_disponivel === "0" ? 'selected' : "" %>Desativado</option>
+        </select>
+      </div>
+
+    <!-- BOTÃO DE ENVIO -->
+      <button type="submit" class="btn-subtle theme-success mt-3">
+        Editar Livro
+        </button>
+        </form>
+     </div>
+</main>
+
+<%- include('../partials/footer') %>

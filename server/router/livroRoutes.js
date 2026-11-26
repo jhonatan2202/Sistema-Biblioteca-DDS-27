@@ -15,13 +15,17 @@ router.get("/cadastro", (req,res) =>{
 router.post("/cadastro",livroControllers.criarL)
 
 
-// router.get("/editar", (req,res) =>{
-//     res.render("usuarios/editar")
-// })
+// MOSTRA A ROTA DE EDITAR USUÁRIO
+router.get("/editar/:id", livroControllers.renderizarEditar)
+// MANDAR AS INFORMAÇÕES DE CADASTRO PARA O CONTROLLER
+router.post("/editar/:id", livroControllers.editar)
 
 
 // MOSTRA A ROTA DE LISTAR LIVROS
 router.get("/",livroControllers.listar)
+
+// ROTA DE DELETAR UM LIVRO
+router.post("/deletar/:id", livroControllers.deletarLivro)
 
 
 // EXPORTAR O ROUTER
